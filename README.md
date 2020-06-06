@@ -18,4 +18,5 @@ Todo:
 shapes  
 
 Issues:  
-allows layers to be added more than once < add check
+allows layers to be added more than once < add check  
+layers start off null, if they aren't modified to begin with it causes nullpointer 
