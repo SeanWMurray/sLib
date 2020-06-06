@@ -14,10 +14,8 @@ their own pixel buffer (ex: render sky on first layer, then actual game environm
 Each pixel buffer is pushed to the active Display every time the internal update method is called (which also calls the
 updateBuffer method.  
 
-
-
-
-
-
 Todo:  
-shapes
+shapes  
+
+Issues:  
+allows layers to be added more than once < add check
