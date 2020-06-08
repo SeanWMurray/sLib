@@ -22,7 +22,7 @@ public class TestDisplay extends Display {
 //            inter[i] = i;
 //        }
 //        testLayer.writeBuffer(inter);
-        //testLayer.drawSquare( 40, 40, 80, 80, Color.MAGENTA.getRGB());
+//      testLayer.drawSquare( 40, 40, 80, 80, Color.MAGENTA.getRGB());
 
     }
 
