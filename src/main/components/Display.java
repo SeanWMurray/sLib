@@ -43,7 +43,7 @@ public abstract class Display {
     }
 
     public void update() {
-        updateBuffer();
+        onTick();
 
         for (Layer l: layers) {
             for (int i = 0; i < pixelBuffer.length; i++) {
@@ -52,7 +52,7 @@ public abstract class Display {
         }
     }
 
-    public abstract void updateBuffer();
+    public abstract void onTick();
 
     public int getWidth() {
         return width;

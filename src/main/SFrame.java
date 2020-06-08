@@ -89,6 +89,7 @@ public class SFrame extends JFrame implements Runnable {
         System.exit(0);
     }
 
+
     private void draw() {
         BufferStrategy buffer = getBufferStrategy();
         if (buffer == null) {
