@@ -1,6 +1,7 @@
 package main.components;
 
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.ArrayList;
@@ -16,7 +17,8 @@ public abstract class Display {
     private int[] pixelBuffer;
     private int[] pushBuffer;
 
-    public Display() { }
+    public Display() {
+    }
 
     public void setSize(int width, int height) {
         this.width = width;
@@ -34,7 +36,9 @@ public abstract class Display {
 
     public void addLayers(ArrayList<Layer> layerArrayList) {
         for (Layer l: layerArrayList) {
-            layers.add(l);
+            if (!layerArrayList.contains(l)) {
+                layers.add(l);
+            }
         }
     }
 
@@ -42,12 +46,18 @@ public abstract class Display {
         return pixelBuffer;
     }
 
+    public BufferedImage getImage() {
+        return displayImage;
+    }
+
     public void update() {
         onTick();
 
         for (Layer l: layers) {
+            int[] tempBuffer = l.getLayerBuffer();
+            l.drawShapes();
             for (int i = 0; i < pixelBuffer.length; i++) {
-                pixelBuffer[i] = l.getLayerBuffer()[i];
+                pixelBuffer[i] = tempBuffer[i];
             }
         }
     }
@@ -60,6 +70,14 @@ public abstract class Display {
 
     public int getHeight() {
         return height;
+    }
+
+    private void initializeBuffer() {
+        System.out.println(width + ", " + height);
+        for (int i = 0; i < (width*height); i++) {
+            System.out.println(i);
+            pixelBuffer[i] = Color.black.getRGB();
+        }
     }
 
 }

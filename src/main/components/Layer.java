@@ -1,16 +1,25 @@
 package main.components;
 
-import java.awt.*;
+
+import main.components.shapes.Shape;
+
+import java.util.ArrayList;
 
 public class Layer {
 
     private Display display;
 
     private int[] pixelBuffer;
+    private ArrayList<Shape> shapes = new ArrayList<>();
 
     public Layer(Display display) {
         this.display = display;
-        pixelBuffer = display.getPixelBuffer();
+        initializeBuffer();
+    }
+
+    public void initializeBuffer() {
+        pixelBuffer = new int[640 * 480];
+        System.out.println(pixelBuffer.length);
     }
 
     public void writeBuffer(int[] pixelBuffer) {
@@ -21,27 +30,21 @@ public class Layer {
         return pixelBuffer;
     }
 
-    //Does not work
-    public void drawCircle(int x, int y, int circ, int color) {
-        int[] tempBuf = display.getPixelBuffer();
-        for (int i = 0; i < x; i++) {
-            for (int k = 0; i < y; i++) {
-                int determinant = (i*i) + (k*k) - circ*circ;
-                if (determinant < 0) {
-                    tempBuf[((k + y) * display.getWidth()) + i + x] = color;
-                }
-            }
-        }
-        writeBuffer(tempBuf);
+    public void addShape(Shape shape) {
+        shapes.add(shape);
     }
 
-    public void drawSquare (int topx, int topy, int botx, int boty, int color) {
-        int[] tempBuf = display.getPixelBuffer();
-        for (int i = topx; i < botx; i++) {
-            for (int k = topy; k < boty; k++) {
-                tempBuf[(k * display.getWidth()) + i] = color;
-            }
+    public void drawShapes() {
+        for (Shape shape: shapes) {
+            shape.drawShape();
         }
-        writeBuffer(tempBuf);
+    }
+
+    public void setPoint(int x, int y, int color) {
+        pixelBuffer[(y * display.getWidth()) + x] = color;
+    }
+
+    public Display getDisplay() {
+        return display;
     }
 }

@@ -71,6 +71,7 @@ public class SFrame extends JFrame implements Runnable {
             startTime = System.nanoTime();
 
             display.update();
+            displayImage = display.getImage();
             draw();
 
             difference = System.nanoTime() - startTime;
