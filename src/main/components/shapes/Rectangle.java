@@ -2,7 +2,6 @@ package main.components.shapes;
 
 import main.components.Layer;
 
-//i hate my neighbors, they are too loud
 public class Rectangle extends Shape {
 
     public int xTop, xBottom, yTop, yBottom, color;

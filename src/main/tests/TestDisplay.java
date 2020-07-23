@@ -10,6 +10,8 @@ public class TestDisplay extends Display {
 
     Layer testLayer;
 
+    int i = 5;
+
     public TestDisplay() {
         testLayer = new Layer(this);
         addLayer(testLayer);
@@ -17,6 +19,8 @@ public class TestDisplay extends Display {
 
     @Override
     public void onTick() {
+        i = (i + 1) % 200;
+        testLayer.setPoint(30, i, Color.orange.getRGB());
         testLayer.setPoint(30, 30, Color.yellow.getRGB());
         testLayer.setPoint(31, 30, Color.yellow.getRGB());
         testLayer.setPoint(32, 30, Color.yellow.getRGB());

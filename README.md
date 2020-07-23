@@ -15,7 +15,7 @@ Each pixel buffer is pushed to the active Display every time the internal update
 updateBuffer method.  
 
 Todo:  
-shapes  
+Circles
 
 Issues:  
 allows layers to be added more than once < add check  
